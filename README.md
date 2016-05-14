@@ -5,8 +5,11 @@ Users will be able to do different tasks with the hand depending on which button
 
 # 0000
 
+Default function. This will set the hand out flat.
 
 # 0001
+
+This function will have the hand display the number 1, by putting up only the index finger.
 
 # 0010
 
