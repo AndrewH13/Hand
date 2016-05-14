@@ -1,0 +1,44 @@
+#include <Servo.h> 
+ 
+Servo thumbMotor;  // create servo object to control the thumb
+Servo indexMotor;  // create servo object to control the index finger
+Servo middleMotor;  // create servo object to control the middle finger
+Servo ringMotor;  // create servo object to control the ring finger
+Servo pinkyMotor;  // create servo object to control the pinky finger
+
+void setup() {
+  
+  // attach the motors to their corresponding digital pins
+  thumbMotor.attach(8);
+  indexMotor.attach(9);
+  middleMotor.attach(10);
+  ringMotor.attach(11);
+  pinkyMotor.attach(12);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+  // get the sensor values from each finger
+  int thumbSensor = analogRead(A0);
+  int indexSensor = analogRead(A1);
+  int middleSensor = analogRead(A2);
+  int ringSensor = analogRead(A3);
+  int pinkySensor = analogRead(A4);
+
+  // map the sensors values to degrees from 0 to 180 for the servo
+  // the second and third parameters should be modified corresponding to your circuit, these are the values that worked best for mine
+  int thumbPos = map(thumbSensor, 650, 570, 0, 180);
+  int indexPos = map(indexSensor, 700, 500, 0, 180);
+  int middlePos = map(middleSensor, 450, 600, 0, 180);
+  int ringPos = map(ringSensor, 500, 600, 0, 180);
+  int pinkyPos = map(pinkySensor, 500, 600, 0, 180);
+  
+  // write the updated servo positions
+  thumbMotor.write(thumbPos);
+  indexMotor.write(indexPos);
+  middleMotor.write(middlePos);
+  ringMotor.write(ringPos);
+  pinkyMotor.write(pinkyPos);
+}
